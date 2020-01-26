@@ -66,7 +66,6 @@ function App() {
         <h2>Your browser doesn't support speech recognition</h2>
       </div>
     );
-  console.log({ state });
   return (
     <div className={classes.app}>
       <Router>

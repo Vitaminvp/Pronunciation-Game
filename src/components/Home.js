@@ -30,14 +30,14 @@ function Home({ history }) {
   function FormRow() {
     return (
       <React.Fragment>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <ButtonComponent
             name="Use default worlds"
             url="/default"
             onClick={handleClick}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <ButtonComponent
             name="Add custom words"
             url="/custom"

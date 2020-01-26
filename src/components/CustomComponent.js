@@ -41,8 +41,11 @@ function CustomComponent({ history }) {
     dispatch({ type: "UPDATE_WORDS", data: allWords });
     history.push("/default");
   };
+  const handleClick = () => history.push("/");
   return (
     <Fragment>
+      <ButtonComponent name="Home" url="/" onClick={handleClick} />
+      <br />
       <form className={classes.root} noValidate autoComplete="off">
         <div>
           <TextField

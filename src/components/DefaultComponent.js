@@ -18,7 +18,9 @@ function DefaultComponent({ history }) {
     state: { allWords },
     dispatch
   } = useContext(AppContext);
+
   const [pronounced, setPronounced] = useState("");
+
   useEffect(() => {
     const recognition = new window.SpeechRecognition();
     recognition.continuous = true;
@@ -28,7 +30,8 @@ function DefaultComponent({ history }) {
     return () => {
       recognition.stop();
     };
-  }, []);
+  });
+
   function handleResult({ results }) {
     const words = results[results.length - 1][0].transcript;
     let result = words.toLowerCase();
