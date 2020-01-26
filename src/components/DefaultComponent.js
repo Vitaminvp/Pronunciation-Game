@@ -13,9 +13,10 @@ const useStyles = makeStyles({
   }
 });
 
-function DefaultComponent({ history, setBg }) {
+function DefaultComponent({ history }) {
   const {
-    state: { allWords }
+    state: { allWords },
+    dispatch
   } = useContext(AppContext);
   const [pronounced, setPronounced] = useState("");
   useEffect(() => {
@@ -33,7 +34,7 @@ function DefaultComponent({ history, setBg }) {
     let result = words.toLowerCase();
     result = result.replace(/\s/g, "");
     if (result in allWords) {
-      setBg(allWords[result]);
+      dispatch({ type: "UPDATE_BG", data: allWords[result] });
       return setPronounced(result);
     }
   }

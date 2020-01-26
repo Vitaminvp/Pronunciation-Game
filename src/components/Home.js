@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import ButtonComponent from "./Button";
 import { withRouter } from "react-router";
 import { AppContext } from "../App";
-import colors from "../constants/colors"
+import colors from "../constants/colors";
 
 const useStyles = makeStyles(theme => ({
   root: {

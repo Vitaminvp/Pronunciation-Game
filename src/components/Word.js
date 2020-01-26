@@ -23,8 +23,7 @@ const useStyles = makeStyles({
     backgroundColor: words[word],
     color: isDark(word, words) ? "#f0e9e99c" : "#353131",
     fontWeight: "500",
-    boxShadow: "0px 0px 3px 1px rgba(0,0,0,0.75)",
-
+    boxShadow: "0px 0px 3px 1px rgba(0,0,0,0.75)"
   })
 });
 
@@ -39,7 +38,7 @@ export default function Word({ word, pronounced }) {
   }, [word, pronounced]);
 
   const classes = useStyles({ word, words: allWords });
-  const chipClasses = classNames(classes.chip, {[classes.got]: said});
+  const chipClasses = classNames(classes.chip, { [classes.got]: said });
 
   return (
     <div className={classes.root}>

@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { withRouter } from "react-router";
 import ButtonComponent from "./Button";
-import {isZeroLength, randomColor} from "../utils/";
+import { isZeroLength, randomColor } from "../utils/";
 import { AppContext } from "../App";
 
 const useStyles = makeStyles(theme => ({
@@ -17,10 +17,10 @@ const useStyles = makeStyles(theme => ({
 
 const placeHolder = "Paste here your words";
 
-function CustomComponent({history}) {
+function CustomComponent({ history }) {
   const classes = useStyles();
   const [words, setWords] = React.useState(placeHolder);
-  const {dispatch} = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
   const handleChange = event => {
     setWords(event.target.value);
   };
@@ -29,17 +29,17 @@ function CustomComponent({history}) {
   };
   const handleBlur = () => isZeroLength(words) && setWords(placeHolder);
   const handleSubmit = () => {
-    if(isZeroLength(words) || words === placeHolder) return;
+    if (isZeroLength(words) || words === placeHolder) return;
     const allWords = words
-        .toLowerCase()
-        .replace(/(?:[^\w]|_)+/ig, " ")
-        .split(/\s+/)
-        .filter(Boolean)
-        .reduce((acc, cur) => {
-          return {...acc, [cur]: randomColor()};
-        }, {});
-    dispatch({ type: 'UPDATE_WORDS', data: allWords,});
-    history.push("/default")
+      .toLowerCase()
+      .replace(/(?:[^\w]|_)+/gi, " ")
+      .split(/\s+/)
+      .filter(Boolean)
+      .reduce((acc, cur) => {
+        return { ...acc, [cur]: randomColor() };
+      }, {});
+    dispatch({ type: "UPDATE_WORDS", data: allWords });
+    history.push("/default");
   };
   return (
     <Fragment>
@@ -57,11 +57,11 @@ function CustomComponent({history}) {
             onBlur={handleBlur}
           />
         </div>
-        <br/>
+        <br />
         <ButtonComponent name="Start" onClick={handleSubmit} />
       </form>
     </Fragment>
   );
 }
 
-export default withRouter(CustomComponent)
+export default withRouter(CustomComponent);

@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Home from "./components/Home";
@@ -10,7 +10,7 @@ import colors from "./constants/colors";
 const useStyles = makeStyles({
   app: {
     textAlign: "center",
-    background: ({bgColor}) => bgColor,
+    background: ({ bg }) => bg,
     minHeight: "100vh",
     display: "flex",
     flexDirection: "column",
@@ -31,14 +31,21 @@ const useStyles = makeStyles({
 export const AppContext = React.createContext(null);
 
 const initialState = {
-  allWords: colors
+  allWords: colors,
+  bg: "linear-gradient(45deg, #1e1e1e 30%, #282c34 90%)"
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case "UPDATE_WORDS":
       return {
+        ...state,
         allWords: action.data
+      };
+    case "UPDATE_BG":
+      return {
+        ...state,
+        bg: action.data
       };
 
     default:
@@ -48,8 +55,7 @@ function reducer(state, action) {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [bgColor, setBgColor] = useState("linear-gradient(45deg, #1e1e1e 30%, #282c34 90%)");
-  const classes = useStyles({bgColor});
+  const classes = useStyles({ bg: state.bg });
 
   window.SpeechRecognition =
     window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -60,7 +66,7 @@ function App() {
         <h2>Your browser doesn't support speech recognition</h2>
       </div>
     );
-
+  console.log({ state });
   return (
     <div className={classes.app}>
       <Router>
@@ -73,7 +79,7 @@ function App() {
               <CustomComponent />
             </Route>
             <Route path="/default">
-              <DefaultComponent setBg={setBgColor} />
+              <DefaultComponent />
             </Route>
             <Route path="*">
               <Home />
