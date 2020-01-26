@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@keyframes jump {
+    from {
+        transform: scale(2.5) rotate(-3deg);
+    }
+    to {
+        transform: scale(1) rotate(0);
+    }
+}
