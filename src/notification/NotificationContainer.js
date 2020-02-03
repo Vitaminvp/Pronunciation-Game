@@ -47,8 +47,8 @@ NotificationContainer.propTypes = {
 };
 
 NotificationContainer.defaultProps = {
-  enterTimeout: 400,
-  leaveTimeout: 400
+  enterTimeout: 4000,
+  leaveTimeout: 4000
 };
 
 export default NotificationContainer;
