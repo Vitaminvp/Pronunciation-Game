@@ -5,6 +5,8 @@ import ButtonComponent from "./Button";
 import { withRouter } from "react-router";
 import { AppContext } from "../App";
 import colors from "../constants/colors";
+import { NotificationContainer, NotificationManager } from "../notification";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -48,11 +50,65 @@ function Home({ history }) {
     );
   }
 
+  const createNotification = type => {
+    return () => {
+      switch (type) {
+        case "info":
+          NotificationManager.info("Info message");
+          break;
+        case "success":
+          NotificationManager.success("Success message", "Title here");
+          break;
+        case "warning":
+          NotificationManager.warning(
+            "Warning message",
+            "Close after 3000ms",
+            30000
+          );
+          break;
+        case "error":
+          NotificationManager.error("Error message", "Click me!", 5000, () => {
+            alert("callback");
+          });
+          break;
+      }
+    };
+  };
+
   return (
     <div className={classes.root}>
       <Grid container spacing={1}>
         <Grid container item xs={12} spacing={3}>
           <FormRow />
+
+          <div style={{margin: "auto"}}>
+            <Button variant="contained" color="default"
+              className="btn btn-info"
+              onClick={createNotification("info")}
+            >
+              Info
+            </Button>
+            <Button variant="contained" color="default"
+              className="btn btn-success"
+              onClick={createNotification("success")}
+            >
+              Success
+            </Button>
+            <Button variant="contained" color="primary"
+              className="btn btn-warning"
+              onClick={createNotification("warning")}
+            >
+              Warning
+            </Button>
+            <Button variant="contained" color="secondary"
+              className="btn btn-danger"
+              onClick={createNotification("error")}
+            >
+              Error
+            </Button>
+
+            <NotificationContainer />
+          </div>
         </Grid>
       </Grid>
     </div>

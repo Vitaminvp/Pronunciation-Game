@@ -42,7 +42,7 @@ function DefaultComponent({ history }) {
     }
   }
   const classes = useStyles();
-  const handleClick = () => history.push("/");
+  const handleClick = url => history.push(url);
 
   return (
     <Fragment>

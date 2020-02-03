@@ -41,7 +41,7 @@ function CustomComponent({ history }) {
     dispatch({ type: "UPDATE_WORDS", data: allWords });
     history.push("/default");
   };
-  const handleClick = () => history.push("/");
+  const handleClick = url => history.push(url);
   return (
     <Fragment>
       <ButtonComponent name="Home" url="/" onClick={handleClick} />
