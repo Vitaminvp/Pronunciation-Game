@@ -57,8 +57,8 @@ Notifications.propTypes = {
 Notifications.defaultProps = {
   notifications: [],
   onRequestHide: () => {},
-  enterTimeout: 4000,
-  leaveTimeout: 4000
+  enterTimeout: 400,
+  leaveTimeout: 400
 };
 
 export default Notifications;

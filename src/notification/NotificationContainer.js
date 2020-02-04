@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import NotificationManager from './NotificationManager';
 import Notifications from './Notifications';
 
@@ -47,8 +47,8 @@ NotificationContainer.propTypes = {
 };
 
 NotificationContainer.defaultProps = {
-  enterTimeout: 4000,
-  leaveTimeout: 4000
+  enterTimeout: 400,
+  leaveTimeout: 400
 };
 
 export default NotificationContainer;
